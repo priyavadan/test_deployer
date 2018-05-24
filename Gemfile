@@ -7,6 +7,7 @@ gem 'remotipart'
 gem 'rails_admin'
 gem 'rails_admin_rollincode'
 gem 'devise'
+gem 'script_executor'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.0'

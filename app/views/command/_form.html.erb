@@ -1,11 +1,11 @@
 <%= bootstrap_form_tag  url: "/command/show_data" do |f| %>
   <%= f.text_field :username, label: "One-IT username" %>
   <%= f.text_field :password, label: "One-IT password", type: "password" %>
-  <%= f.select :app_name, [['C55-1T','c55fx_nvm_tester'],['C90-TFS','c90tfs_nvm_tester'], ['ISC', 'ISC']], :prompt => "Select One"%>
-  <%= f.select :vault, [['C55-1T','sync://sync-15088:15088/Projects/common_tester_blocks/blocks/C55Fx_NVM_tester'], ['C55-1T-Git','http://sw-stash.freescale.net/scm/nvm/c55fx_nvm_tester.git'], ['C90-TFS','http://sw-stash.freescale.net/scm/nvm/c90tfs_nvm_tester.git'], ['ISC', 'sync://sync-15088:15088/Projects/common_tester_blocks/blocks/isc/tool_data/rgen']], :prompt => "Select One" %>
+  <%= f.select :app_name, [['C55-1T','c55fx_nvm_tester']], :prompt => "Select One"%>
+  <%= f.select :vault, [['C55-1T-Git','ssh://git@bitbucket.sw.nxp.com/nvm/c55fx_nvm_tester.git']], :prompt => "Select One" %>
   <%= f.text_field :application_version %>
   <%= f.text_field :command %>
   <%= f.text_field :target %>
-  <%= f.select :revision_control, [['DesignSync','DesignSync'],['Git','Git']], :prompt => "Select One" %>
+  <%= f.select :revision_control, [['Git','Git']], :prompt => "Select One" %>
   <%= f.submit class: "btn btn-primary", value: "Submit" %> 
 <% end %>

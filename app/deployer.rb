@@ -70,7 +70,7 @@ end
 
 gemfile =  "/proj/pet_rgen_web/source_v2/#{appVer}_dir_#{time}/#{path}/Gemfile"
 binstubs = "/proj/pet_rgen_web/source_v2/#{appVer}_dir_#{time}/#{path}/lbin"
-gempath = "/home/#{coreid}/.rgen/gems"
+gempath = "/home/#{coreid}/.origen/gems"
 
 server_info = {
   :remote => true,
@@ -86,14 +86,6 @@ result = executor.execute server_info.merge(:capture_output => false, :supress_o
     echo ####################################################################################################################################################"
     echo Current Shell:  $SHELL
     echo Current Path:  $PATH
-    setenv PATH ${PATH}:/run/pkg/fs-rgen-/latest/bin:/usr/bin:/site/lsf/8.0/9.1/linux2.6-glibc2.3-x86_64/etc:/site/lsf/8.0/9.1/linux2.6-glibc2.3-x86_64/bin:/home/#{coreid}/local/bin:/home/#{coreid}/bin:/pkg/python-/2.6.7/x86_64-linux/bin/python:/home/#{coreid}/bin:/bin:/usr/bin:/site/lsf/8.0/9.1/linux2.6-glibc2.3-x86_64/etc:/site/lsf/8.0/9.1/linux2.6-glibc2.3-x86_64/bin:/usr/fsl/bin:/_TOOLS_/arch/bin:/_TOOLS_/wrap/bin:/usr/X11R6/bin:/usr/openwin/bin:/usr/dt/bin:/bin:/usr/bin:/usr/ccs/bin:/usr/ucb:/sbin:/usr/sbin:/home/#{coreid}/bin:/run/pkg/foundation-/frame/bin:/home/#{coreid}/bin
-	setenv _SUE_ '1'
-	setenv NNTPSERVER 'news.freescale.net' 
-	setenv PATH '/usr/fsl/bin:/_TOOLS_/arch/bin:/_TOOLS_/wrap/bin:/usr/X11R6/bin:/usr/openwin/bin:/usr/dt/bin:/bin:/usr/bin:/usr/ccs/bin:/usr/ucb:/sbin:/usr/sbin:'${HOME}'/bin:/run/pkg/foundation-/frame/bin' 
-	setenv MANPATH '/_TOOLS_/arch/man:/usr/X11R6/man:/usr/openwin/man:/usr/dt/man:/usr/share/man:'${HOME}'/man' 
-	setenv SITE 'TX32' 
-	setenv XAPPLRESDIR ''${HOME}'/app-defaults' 
-    echo New Path:  $PATH
     echo Checking BSUB version...
     bsub -V
     echo Sourcing LSF Environment...
@@ -105,8 +97,6 @@ result = executor.execute server_info.merge(:capture_output => false, :supress_o
     echo 
     echo ###### These are the commands that will be run --in order ######    
 
-    source /run/pkg/fs-rgen-/latest/rgen_setup
-   
     cd /proj/pet_rgen_web/source_v2/
 
     mkdir #{appVer}_dir_#{time}

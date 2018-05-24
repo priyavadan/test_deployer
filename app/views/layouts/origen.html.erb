@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Origen - Engineering Environment Framework</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Le styles -->
+    <link href="http://rgen.nxdi.nxp.com/css/bootstrap.min.css" rel="stylesheet">
+    <link href="http://rgen.nxdi.nxp.com/css/bootstrap_custom.css" rel="stylesheet">
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    <link rel="shortcut icon" href="http://rgen.nxdi.nxp.com/favicon.ico">
+    <link rel="icon" type="image/ico" href="http://rgen.nxdi.nxp.com/favicon.ico">
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <script src="http://rgen.nxdi.nxp.com/js/bootstrap.min.js"></script>
+    <%= csrf_meta_tags %>
+  </head>
+
+  <body class="freescale" style="zoom: 1;" data-ember-extension="1">
+    <div id="wrap">
+      <div id="wrapper">
+        <div class="container">
+          <div class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+              <div class="container">
+                <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </a>
+<% a = URI(request.host_with_port) %>
+<% a = a.host %>
+                <a class="brand active" href>Home</a>
+                <div class="nav-collapse collapse">
+                  <ul class="nav">
+                  </ul>
+                  <div class="pull-right" style="margin-top: 13px; color: #999">
+                    <span style="font-weight: bold; font-size: 18px;">
+                    </span>   
+                  </div>  
+
+                </div>
+                <!--/.nav-collapse -->
+              </div>
+            </div>
+          </div>
+          <div>
+
+<% if flash.notice %>
+  <%= content_tag :div, flash.notice, :class => "alert alert-block" %>
+<% end %>
+
+<% if current_user %>
+  <div class="pull-right" style="margin-top: 8px; margin-left: 10px">
+    <%= current_user.display_name %> |
+    <a href="#" onclick="logout(); return false;">Log out</a>
+  </div>
+  <div class="pull-right" style="margin-top: -7px;">
+    <img src="<%= current_user.avatar_url %>" class="img-polaroid" style="max-height: 40px; height: 50px;"g
+  </div>
+<% end %>
+
+<%= yield %>
+          </div>
+        </div>
+      </div>
+      <div id="push"></div>
+    </div>
+
+    <div id="footer">
+      <div class="container" style="padding-top:20px">
+        <p class="pull-left">
+          NXP Internal Use Only
+        </p>
+        <p class="pull-right">© Copyright <%= Time.now.year %> NXP, Inc. All Rights Reserved</p>
+      </div>
+    <div>
+  </body>
+</html>
