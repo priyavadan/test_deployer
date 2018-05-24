@@ -1,6 +1,8 @@
 class CommandController < ApplicationController
 helper_method :run_remote_command
 
+  include ActionController::Live
+
   layout "origen"
 #  before_filter :set_tab
 

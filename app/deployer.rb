@@ -43,8 +43,8 @@ time = Time.now.getutc.to_i
 
 coreid = coreid.downcase
 
-server_array = ['lvd0455', 'lvd0467', 'lvd0468', 'lvd1125', 'lvd1126', 'lvd1127', 'lvd1128', 'lvd1129', 'lvd1130', 'lvd1131', 'lvd1132', 'lvd1133', 'lvd1134', 'lvd1135', 'lvd1136', 'lvd1137', 'lvd1138', 'lvd1139', 
-'lvd1140', 'lvd1141', 'lvd1142', 'lvd1143', 'lvd1144', 'lvd1145', 'lvd1146', 'lvd1147', 'lvd1148', 'lvd1149', 'lvd1150']
+server_array = ['acv0169.nxdi.us-cdc01.nxp.com']
+
 
 server = server_array.sample
 
@@ -88,8 +88,6 @@ result = executor.execute server_info.merge(:capture_output => false, :supress_o
     echo Current Path:  $PATH
     echo Checking BSUB version...
     bsub -V
-    echo Sourcing LSF Environment...
-    source /site/lsf/env.csh
     echo Executing command on server: hostname
     echo ####################################################################################################################################################
     echo Configuration Setup end 
@@ -109,11 +107,11 @@ result = executor.execute server_info.merge(:capture_output => false, :supress_o
     
     bundle install --gemfile #{gemfile} --binstubs #{binstubs} --path #{gempath}
 
-    rgen -v 
+    origen -v 
    
-    rgen -t #{target1}
+    origen -t #{target1}
 
-    rgen #{command}
+    origen #{command}
      
     trans -P /proj/pet_rgen_web/source_v2/#{appVer}_dir_#{time}/#{path}/output/
 
