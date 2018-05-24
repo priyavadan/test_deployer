@@ -1,0 +1,28 @@
+<h2> Data Entered: </h2>
+
+<b>Username:</b> <%= @username %>
+<br>
+<b>Command:</b> <%= @command %>
+<br>
+<b>Application Name</b> <%= @app_name %>
+<br>
+<b>Application version:</b> <%= @application_version %>
+<br>
+<b>Vault</b> <%= @vault %>
+<br>
+<b>Target:</b> <%= @target %>
+<br>
+<b>Revision Control</b> <%= @revision_control %>
+<br>
+<br>
+<b><%= @username %></b>: Your command has been submitted to the LSF cluster and is currently being processed.
+<br>
+Once the command completes and an output is generated, the output directory will be transcended.
+<br>
+You will receive an email when the transcend is completed.
+<br>
+Thank you!
+<br>
+<br>
+<br>
+<b>Time:</b> <%= Time.now %> <b>Spawn status: </b>

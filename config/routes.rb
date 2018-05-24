@@ -14,4 +14,8 @@ Rails.application.routes.draw do
   devise_scope :user do
     delete 'logout', to: 'devise/sessions#destroy'
   end
+
+  get 'command/enter'
+  post 'command/show_data'  
+
 end
