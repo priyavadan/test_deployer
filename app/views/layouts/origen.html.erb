@@ -60,7 +60,7 @@
 <% if current_user %>
   <div class="pull-right" style="margin-top: 8px; margin-left: 10px">
     <%= current_user.email %> |
-    <a href="#" onclick="logout(); return false;">Log out</a>
+  <%= link_to('Logout', destroy_user_session_path, method: :delete) %>        
   </div>
 <% end %>
 
