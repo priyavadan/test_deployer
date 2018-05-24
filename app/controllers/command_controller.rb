@@ -2,7 +2,6 @@ class CommandController < ApplicationController
 helper_method :run_remote_command
 
   layout "origen"
-
 #  before_filter :set_tab
 
   def set_tab
@@ -10,11 +9,13 @@ helper_method :run_remote_command
   end
 
   def show_data
+  @application ||= Application.all
      @command = params[:command]
      @app_name = params[:app_name]
+     a = @application.where(name: @app_name)
+     @vault = a[0].url
      @application_version = params[:application_version]
      @target= params[:target]
-     @vault = params[:vault] || []
      @username = params[:username]
      @password = params[:password]
      @revision_control = params[:revision_control]

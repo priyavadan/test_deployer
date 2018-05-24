@@ -1,8 +1,13 @@
 <%= bootstrap_form_tag  url: "/command/show_data" do |f| %>
   <%= f.text_field :username, label: "One-IT username" %>
   <%= f.text_field :password, label: "One-IT password", type: "password" %>
-  <%= f.select :app_name, [['C55-1T','c55fx_nvm_tester']], :prompt => "Select One"%>
-  <%= f.select :vault, [['C55-1T-Git','ssh://git@bitbucket.sw.nxp.com/nvm/c55fx_nvm_tester.git']], :prompt => "Select One" %>
+
+<%= f.select(:app_name) do %>
+    <% @application.each do |l| -%>
+      <%= content_tag(:option, l.name, value: l.name) %>
+    <% end %>
+<% end %>
+
   <%= f.text_field :application_version %>
   <%= f.text_field :command %>
   <%= f.text_field :target %>
