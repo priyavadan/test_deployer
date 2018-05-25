@@ -48,28 +48,17 @@ server_array = ['acv0169.nxdi.us-cdc01.nxp.com']
 
 server = server_array.sample
 
-if "#{app_name}" == "c55fx_nvm_tester" && "#{rc}" == "DesignSync"
-  path = "tool_data/rgen_work_v3"
-elsif "#{app_name}" == "c55fx_nvm_tester" && "#{rc}" == "Git"
- path = "c55fx_nvm_tester"
-elsif "#{app_name}"  == "c90tfs_nvm_tester"
- path = "c90tfs_nvm_tester"
-elsif "#{app_name}" == "ISC" && "#{rc}" == "DesignSync"
- path = ""
-elsif "#{app_name}" == "c55fx_nvm_tester" && "#{rc}" == "Git" 
-path = "c55fx_nvm_tester"
-end
 
 if "#{rc}" == "DesignSync" && "#{app_name}" != "ISC"
     fetch_command = "rgen fetch #{app_name} -v #{appVer} -o ."
     elsif "#{rc}" == "Git"
-    fetch_command = "git clone --branch #{appVer} #{designsync}"
+    fetch_command = "git clone --branch #{appVer} #{designsync} #{appVer}_dir_#{time}"
     elsif "#{app_name}" == "ISC"
     fetch_command = "dssc setvault sync://sync-15088:15088/Projects/common_tester_blocks/blocks/isc/tool_data/rgen . & dssc pop -rec -uni -get -force -ver #{appVer} ." 
 end
 
-gemfile =  "/proj/pet_rgen_web/source_v2/#{appVer}_dir_#{time}/#{path}/Gemfile"
-binstubs = "/proj/pet_rgen_web/source_v2/#{appVer}_dir_#{time}/#{path}/lbin"
+gemfile =  "/proj/pet_rgen_web/source_v2/#{appVer}_dir_#{time}/Gemfile"
+binstubs = "/proj/pet_rgen_web/source_v2/#{appVer}_dir_#{time}/lbin"
 gempath = "/home/#{coreid}/.origen/gems"
 
 server_info = {
@@ -97,13 +86,9 @@ result = executor.execute server_info.merge(:capture_output => false, :supress_o
 
     cd /proj/pet_rgen_web/source_v2/
 
-    mkdir #{appVer}_dir_#{time}
-
-    cd #{appVer}_dir_#{time}
-
     #{fetch_command}
-    
-    cd "#{path}"
+   
+    cd #{appVer}_dir_#{time}
     
     bundle install --gemfile #{gemfile} --binstubs #{binstubs} --path #{gempath}
 
@@ -113,7 +98,7 @@ result = executor.execute server_info.merge(:capture_output => false, :supress_o
 
     origen #{command}
      
-    trans -P /proj/pet_rgen_web/source_v2/#{appVer}_dir_#{time}/#{path}/output/
+    trans -P /proj/pet_rgen_web/source_v2/#{appVer}_dir_#{time}/output/
 
     chown #{coreid}:nvmpet  /proj/pet_rgen_web/source_v2/#{appVer}_dir_#{time} -R
     
@@ -134,7 +119,7 @@ end
 #    appVer =  ask("Enter 1T App Version: ") do |ch| ch.readline=true & ch.echo = true end
 #    dssc setvault sync://sync-15088:15088/Projects/common_tester_blocks/blocks/C55Fx_NVM_tester .
 
-	G = File.open("/proj/pet_rgen_web/source_v2/#{appVer}_dir_#{time}/#{path}/trans.log", "r")
+	G = File.open("/proj/pet_rgen_web/source_v2/#{appVer}_dir_#{time}/trans.log", "r")
     contents = G.read
     puts contents[0..9]
     str = contents[0..9]

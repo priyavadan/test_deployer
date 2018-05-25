@@ -17,6 +17,5 @@ Rails.application.routes.draw do
 
   get 'command/enter'
   post 'command/show_data'
-  get 'command/live'  
-  get 'messages/index'
+#  get 'command/live'  
 end
