@@ -42,4 +42,16 @@ helper_method :run_remote_command
      end
       logger.info("Time to wake up!")
    end
+
+
+    def live
+        response.headers['Content-Type'] = 'text/event-stream'
+    100.times {
+      response.stream.write "hello world\n"
+      sleep 1
+    }
+  ensure
+    response.stream.close
+  end
+
 end

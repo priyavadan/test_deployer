@@ -195,6 +195,7 @@ Thanks,
 RGen Core Team.
 
 END2
-
-puts "Sending Email..."
-send_email(:from => "#{coreid}@freescale.com", :from_alias => "#{coreid}@freescale.com", :to => "#{coreid}@freescale.com", :subject => "Module #{appVer} Successfully Generated", :body => "#{body2}")
+a = `ldapcat.py phone #{coreid}`
+email = a.split(":")[3]
+puts "Sending Email...to #{email}"
+send_email(:from => "#{email}", :from_alias => "#{email}", :to => "#{email}", :subject => "Module #{appVer} Successfully Generated", :body => "#{body2}")
