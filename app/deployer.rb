@@ -43,7 +43,7 @@ time = Time.now.getutc.to_i
 
 coreid = coreid.downcase
 
-server_array = ['acv0169.nxdi.us-cdc01.nxp.com']
+server_array = ['acv0169.nxdi.us-cdc01.nxp.com', 'acv0170.nxdi.us-cdc01.nxp.com', 'acv0171.nxdi.us-cdc01.nxp.com', 'acv0035.nxdi.us-cdc01.nxp.com']
 
 
 server = server_array.sample
