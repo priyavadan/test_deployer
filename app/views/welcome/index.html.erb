@@ -1,7 +1,5 @@
-<% content_for(:left_side_bar) do %>
 <h2> Origen Test Deployer</h2>
-    <%= render :partial => "command/form" %>
-<% end %>    
+<%= render 'command/form' %>
 
 <% if user_signed_in? %>
   <li>
