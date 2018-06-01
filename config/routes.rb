@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get 'welcome/docs'
   get 'welcome/index'
   devise_for :users
   
@@ -17,5 +18,4 @@ Rails.application.routes.draw do
 
   get 'command/enter'
   post 'command/show_data'
-#  get 'command/live'  
 end

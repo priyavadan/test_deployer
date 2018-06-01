@@ -35,9 +35,8 @@
                   <span class="icon-bar"></span>
                   <span class="icon-bar"></span>
                 </a>
-<% a = URI(request.host_with_port) %>
-<% a = a.host %>
-                <a class="brand active" href>Home</a>
+                <a class="brand active" href="/">Home</a>
+                <a class="brand active" href="/welcome/docs">User Guide</a>
                 <div class="nav-collapse collapse">
                   <ul class="nav">
                   </ul>
@@ -51,8 +50,10 @@
               </div>
             </div>
           </div>
+          <div align="left" id="side-content">
+              <%= yield(:left_side_bar) %>
+          </div>
           <div>
-
 <% if flash.notice %>
   <%= content_tag :div, flash.notice, :class => "alert alert-block" %>
 <% end %>

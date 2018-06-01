@@ -1,0 +1,59 @@
+<h2>Origen Test Deployer - NxDI</h2>
+
+<br> </br>
+
+This guide outlines how the Test deployer <a href="/">here</a> can be used to run Origen commands for generating the output for a certain application.
+
+<br> </br>
+
+<h3> Pre-Requisites </h3>
+<ul style="list-style-type:circle">
+
+<li>It is assumed that your NxDI environment has been successfully setup using the guidelines outlined <a href="http://rgen.nxdi.nxp.com/rgen/latest/install/">here</a>. If you haven't, it is highly recommended that you do it now.</li>
+
+<li>The basic requirements for the Test Deployer to work with any Origen application is that the application needs to have specific wrapper commands that help facilitate output generation.</li>
+
+<li> It is also very important that the application command be able to submit jobs to LSF and have support for the <code>Origen.lsf.wait_for_completion</code> option.</li>
+
+<li>If your application is not listed in the deployer database, please contact <a href="https://nww.employee-browser.nxp.com/employee-browser/#/employee?id=priyavadan.kumar@nxp.com">Priyavadan Kumar</a> or <a href = "https://nww.employee-browser.nxp.com/employee-browser/#/employee?id=stephen.mcginty@nxp.com">Stephen McGinty</a> to get it added.</li>
+
+</ul>
+
+<h3> How to use the Test Deployer</h3>
+
+Using the Test deployer @ NxDI is pretty simple.
+<ol type="1">
+<li>Enter the WBI Core ID Example:<code>nxa19128</code></li>
+
+<li>Enter the One-IT password</li>
+
+<li>Select the application name from the drop down menu (see above to get your application added)</li>
+
+<li>Specify the version of the application selected above. Example:<code>v2.0.0</code></li>
+
+<li>Enter the command you wish to run. If the command has multiple options,they need to be comma delimited. 
+
+Example: <code>origen gen_mod a l w</code> would be input as <code>gen_mod,a,l,w</code></li>
+
+<li>Enter the target for your application. If you do not have a version number, you could specify a git branch as well. 
+Example:<code>matterhorn.rb</code> or <code>develop</code></li>
+
+<li>Select the revision control, currently only Git is supported</li>
+
+</ol>
+
+<h3> How the Test Deployer works!</h3>
+
+Once the user has filled up the form and submitted the request:
+<ol type="1">
+
+<li> The Test Deployer will login to a random available NxDI host </li>
+<li> The desired application will be checked out from BitBucket. The links to the repository are managed by a database in the backend, if you need your application added to this database, please contact <a href="https://nww.employee-browser.nxp.com/employee-browser/#/employee?id=priyavadan.kumar@nxp.com">Priyavadan Kumar</a> or <a href = "https://nww.employee-browser.nxp.com/employee-browser/#/employee?id=stephen.mcginty@nxp.com">Stephen McGinty</a></li>
+<li> The Test Deployer will then switch to the specified application version within the repository. If you do not have a version number, you could specify a git branch as well</li>
+<li> The Test Deployer will then set the desired target and run the specified origen command</li>
+<li> Once the LSF commands have been completed successfully, if there is an output directory present, the Test Deployer will compress the output directory and transcend it to the user</li>
+
+
+This is an Initial release of the Test Deployer and many future enhancements are planned.
+
+
